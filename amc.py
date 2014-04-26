@@ -7,7 +7,7 @@ class AddList(list):
     def add(self, *items): [self.append(item) for item in items]
 
 Mission = lambda: Bunch(tag = 'mission', start = AddList(), events = AddList())
-Event = lambda name, f='all': Bunch(name = name, tag = 'event', fire = f, triggers = AddList(), actions = AddList())
+Event = lambda name, f='all': Bunch(name = name, tag = 'event', fire = f, conditions = AddList(), actions = AddList())
 Tag = lambda tag, **args: Bunch(tag = tag, **args)
 
 SetVariable = lambda name, value: Bunch(tag = 'set_variable', name = name, value = value)
@@ -98,7 +98,7 @@ def parse_event(event, parent):
         create_tag(condition, tag)
 
     if event['fire'] == 'once':
-        event.triggers.add(IfVariable(event.name + '_triggered', '!=', 1))
+        event.conditions.add(IfVariable(event.name + '_triggered', '!=', 1))
         event.actions.add(SetVariable(event.name + '_triggered', 1))
 
     parse_items(event.actions, tag)
