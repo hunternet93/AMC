@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+# Artemis Mission Compiler: https://github.com/hunternet93/AMC
+# by Isaac Smith
+# Released under the MIT license, please see LICENSE for more info
+
 import sys, random, copy
 import xml.etree.cElementTree as ET
 from bunch import *
