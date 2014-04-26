@@ -12,7 +12,7 @@ start.add(Player('Artemis',x=50000,z=50500,y=0,angle=0),
 for enemy in range(1, enemies+1):
     name = enemy_name + str(enemy)
     event = Event('enemy ' + str(enemy), 'once')
-    event.triggers.add(IfTimerFinished('enemy ' + str(enemy) + ' timer'))
+    event.conditions.add(IfTimerFinished('enemy ' + str(enemy) + ' timer'))
     event.actions.add(Enemy(name, x=random.randint(*enemy_x), z=random.randint(*enemy_z), y=random.randint(*enemy_y), angle=enemy_angle,
                             hullKeys=enemy_hullKeys, raceKeys=enemy_raceKeys),
                       ClearAI(name),
@@ -24,14 +24,14 @@ for enemy in range(1, enemies+1):
     events.add(event)
 
 winevent = Event('you win!', 'once')
-event.triggers.add(IfEnemyCount('=', 0))
+event.conditions.add(IfEnemyCount('=', 0))
 event.actions.add(BigMessage('Misson Complete', 'Good work, Artemis.'),
                   EndMission())
 events.add(winevent)
 
 for obj in ['Artemis', 'DS1']:
     event = Event(obj + ' destroyed', 'once')
-    event.triggers.add(IfNotExists(obj))
+    event.conditions.add(IfNotExists(obj))
     event.actions.add(BigMessage('Mission Failed', obj + ' Has Been Destroyed'),
                       EndMission())
     events.add(event)

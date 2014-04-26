@@ -94,8 +94,8 @@ def parse_items(items, parent):
 def parse_event(event, parent):
     tag = ET.SubElement(parent, 'event')
 
-    for trigger in event.triggers:
-        create_tag(trigger, tag)
+    for condition in event.conditions:
+        create_tag(condition, tag)
 
     if event['fire'] == 'once':
         event.triggers.add(IfVariable(event.name + '_triggered', '!=', 1))
