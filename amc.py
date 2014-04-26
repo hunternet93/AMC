@@ -34,6 +34,7 @@ IfInsideSphere = lambda name, centerX, centerY, centerZ, radius: Bunch(tag = 'if
 IfOutsideSphere = lambda name, centerX, centerY, centerZ, radius: Bunch(tag = 'if_outside_sphere', name = name, centerX = centerX, centerY = centerY, centerZ = centerZ, radius = radius)
 IfDistance = lambda name1, name2, comparator, value: Bunch(tag = 'if_distance', name1 = name1, name2 = name2, comparator = comparator, value = value)
 IfDamconMembers = lambda team_index, comparator, value: Bunch(tag = 'if_damcom_members', team_index = team_index, comparator = comparator, value = value)
+IfDifficulty = lambda comparator, value: Bunch(tag = 'if_difficulty', comparator = comparator, value = value)
 IfFleetCount = lambda fleetnumber, comparator, value: Bunch(tag = 'if_fleet_count', fleetnumber = fleetnumber, comparator = comparator, value = value)
 IfEnemyCount = lambda comparator, value: Bunch(tag = 'if_fleet_count', comparator = comparator, value = value)
 IfDocked = lambda name: Bunch(tag = 'if_docked', name = name)
@@ -98,12 +99,12 @@ def parse_items(items, parent):
 def parse_event(event, parent):
     tag = ET.SubElement(parent, 'event')
 
-    for condition in event.conditions:
-        create_tag(condition, tag)
-
     if event['fire'] == 'once':
         event.conditions.add(IfVariable(event.name + '_triggered', '!=', 1))
         event.actions.add(SetVariable(event.name + '_triggered', 1))
+
+    for condition in event.conditions:
+        create_tag(condition, tag)
 
     parse_items(event.actions, tag)
 
