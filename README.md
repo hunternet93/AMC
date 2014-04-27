@@ -57,4 +57,5 @@ Credits
 -------
 
 The Bunch library heavily used in AMC was created by David Schoonover: https://github.com/dsc/bunch/tree/master/bunch
+
 Artemis is created by Thom Robertson: http://www.artemis.eochu.com/
