@@ -4,7 +4,7 @@ Artemis Mission Compiler
 Artemis Mission Compiler (AMC) is a mission script generation tool for Artemis: Spaceship Bridge Compiler. It requires only Python 3 to run.
 
 Usage:
-    python3 amc.py mission.amc.py <mission.xml>
+    python3 amc.py mission.amc.py \<mission.xml\>
 
 Tutorial
 --------
@@ -52,6 +52,8 @@ The start event is a special event that is run at the start of the game:
 At the time of this writing, not all of Artemis' actions have been added to AMC. Any action can be added with the Tag object:
 
     Tag('play_sound_now', filename = 'sound.wav')
+
+This is the equivalent of writing \<play_sound_now filename="sound.wav"\> in a standard Artemis script.
 
 Credits
 -------
