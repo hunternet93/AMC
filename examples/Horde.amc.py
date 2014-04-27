@@ -48,12 +48,12 @@ cheatevent = Event('bwa ha ah', 'once')
 cheatevent.conditions.add(IfDifficulty('=', 11))
 cheatevent.actions.add(SetObjectProperty('Artemis', 'countNuke', 50),
                        SetObjectProperty('Artemis', 'countECM', 25),
-                       SetObjectProperty('Artemis', 'energy', 9999),
-                       SetObjectProperty('Artemis', 'totalCoolant', 9999))
+                       SetObjectProperty('Artemis', 'energy', 2000),
+                       SetObjectProperty('Artemis', 'totalCoolant', 100))
 events.add(cheatevent)
 
 cheatrefuelevent = Event('refuel', 'all')
-cheatevent.conditions.add(IfDifficulty('=', 11),
-                          IfObjectProperty('Artemis', 'energy', 'LESS', 200))
-cheatevent.actions.add(SetObjectProperty('Artemis', 'energy', 9999))
+cheatrefuelevent.conditions.add(IfDifficulty('=', 11),
+                          IfObjectProperty('Artemis', 'energy', 'LESS', 500))
+cheatrefuelevent.actions.add(SetObjectProperty('Artemis', 'energy', 2000))
 events.add(cheatrefuelevent)
