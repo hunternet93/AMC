@@ -11,7 +11,7 @@ class AddList(list):
     def add(self, *items): [self.append(item) for item in items]
 
 Mission = lambda: Bunch(tag = 'mission', start = AddList(), events = AddList())
-Event = lambda name, f='all': Bunch(name = name, tag = 'event', fire = f, conditions = AddList(), actions = AddList())
+Event = lambda name, f='all', conditions=[], actions=[]: Bunch(name = name, tag = 'event', fire = f, conditions = AddList() + conditions, actions = AddList() + actions)
 Tag = lambda tag, **args: Bunch(tag = tag, **args)
 
 SetVariable = lambda name, value: Bunch(tag = 'set_variable', name = name, value = value)
@@ -37,6 +37,7 @@ IfOutsideBox = lambda name, leastX, leastZ, mostX, mostZ: Bunch(tag = 'if_outsid
 IfInsideSphere = lambda name, centerX, centerY, centerZ, radius: Bunch(tag = 'if_inside_sphere', name = name, centerX = centerX, centerY = centerY, centerZ = centerZ, radius = radius)
 IfOutsideSphere = lambda name, centerX, centerY, centerZ, radius: Bunch(tag = 'if_outside_sphere', name = name, centerX = centerX, centerY = centerY, centerZ = centerZ, radius = radius)
 IfDistance = lambda name1, name2, comparator, value: Bunch(tag = 'if_distance', name1 = name1, name2 = name2, comparator = comparator, value = value)
+IfDistancePoint = lambda name, x, y, z, comparator, value: Bunch(tag='if_distance', name1=name, pointX=x, pointY=y, pointZ=z, comparator=comparator, value=value)
 IfDamconMembers = lambda team_index, comparator, value: Bunch(tag = 'if_damcom_members', team_index = team_index, comparator = comparator, value = value)
 IfDifficulty = lambda comparator, value: Bunch(tag = 'if_difficulty', comparator = comparator, value = value)
 IfFleetCount = lambda fleetnumber, comparator, value: Bunch(tag = 'if_fleet_count', fleetnumber = fleetnumber, comparator = comparator, value = value)
