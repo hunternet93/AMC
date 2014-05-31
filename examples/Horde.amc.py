@@ -1,5 +1,5 @@
 enemies = 50 # Total amount of enemy ships
-enemy_time = [15, 45] # Range of random times between enemy ships appearing
+enemy_time = [10, 30] # Range of random times between enemy ships appearing
 enemy_raceKeys = 'Kralien enemy'
 enemy_hullKeys = 'small warship'
 enemy_name = 'K'
@@ -44,7 +44,7 @@ endevent.conditions.add(IfTimerFinished('end timer'))
 endevent.actions.add(EndMission())
 events.add(endevent)
 
-cheatevent = Event('bwa ha ah', 'once')
+cheatevent = Event('bwa ha ha', 'once')
 cheatevent.conditions.add(IfDifficulty('=', 11))
 cheatevent.actions.add(SetObjectProperty('Artemis', 'countNuke', 50),
                        SetObjectProperty('Artemis', 'countECM', 25),

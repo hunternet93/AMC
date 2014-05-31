@@ -11,7 +11,7 @@ class AddList(list):
     def add(self, *items): [self.append(item) for item in items]
 
 Mission = lambda: Bunch(tag = 'mission', start = AddList(), events = AddList())
-Event = lambda name, f='all', conditions=[], actions=[]: Bunch(name = name, tag = 'event', fire = f, conditions = AddList() + conditions, actions = AddList() + actions)
+Event = lambda name, f='all', conditions=[], actions=[]: Bunch(name = name, tag = 'event', fire = f, conditions = AddList(conditions), actions = AddList(actions))
 Tag = lambda tag, **args: Bunch(tag = tag, **args)
 
 SetVariable = lambda name, value: Bunch(tag = 'set_variable', name = name, value = value)
